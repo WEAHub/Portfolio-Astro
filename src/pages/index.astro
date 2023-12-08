@@ -1,0 +1,24 @@
+---
+import About from '../components/About.astro';
+import Header from '../components/Header.astro';
+import JobList from '../components/JobList.astro';
+import ProjectList from '../components/ProjectList.astro';
+import Spotlight from '../components/Spotlight.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<div class="relative">
+	<Spotlight></Spotlight>
+	<Layout title="Portfolio FullStack">
+		<div class="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
+			<div class="lg:flex lg:justify-between lg:gap-4">
+				<Header></Header>
+				<main id="content" class="pt-24 lg:w-1/2 lg:py-24">
+					<About></About>
+					<JobList></JobList>
+					<ProjectList></ProjectList>
+				</main>
+			</div>
+		</div> 
+	</Layout>
+</div>

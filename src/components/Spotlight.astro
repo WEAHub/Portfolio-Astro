@@ -1,0 +1,17 @@
+<script>
+
+const spotlight: HTMLElement = document.querySelector('.spotlight')!;
+const spotlightSize: string = 'rgba(29, 78, 216, 0.15), transparent 80%';
+
+
+function updateSpotlight(event: MouseEvent) {
+  const x: number = event.pageX / window.innerWidth * 100
+  const y: number = event.pageY / window.innerHeight * 30
+  spotlight!.style.background = `radial-gradient(600px at ${x}% ${y}%, ${spotlightSize})`;
+}
+
+window.addEventListener('mousemove', e => updateSpotlight(e));
+
+</script>
+
+<div class="spotlight pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"></div>
