@@ -3,6 +3,7 @@ import Job from "./Job.astro";
 import Section from "./Section.astro";
 import { getCollection } from 'astro:content';
 import DownloadCV from "./DownloadCV.astro"
+import FadeInSection from './FadeInSection.tsx'
 const jobList = await getCollection('jobs')
 ---
 
@@ -12,7 +13,9 @@ const jobList = await getCollection('jobs')
     {
       jobList.map(job => (
         <li class="mb-12">
-          <Job job={job}></Job>
+          <FadeInSection client:only>
+            <Job job={job}></Job>
+          </FadeInSection>
         </li>
       ))
     }

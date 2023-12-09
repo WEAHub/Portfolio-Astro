@@ -3,6 +3,7 @@ import Link from "./Link.astro";
 import Project from "./Project.astro";
 import Section from "./Section.astro";
 import { getCollection } from 'astro:content';
+import FadeInSection from './FadeInSection.tsx'
 const projectList = await getCollection('projects')
 ---
 <Section id="projects" label="Mis proyectos">
@@ -11,7 +12,9 @@ const projectList = await getCollection('projects')
     {
       projectList.map(project => (
         <li class="mb-12">
-          <Project project={project}></Project>
+          <FadeInSection client:only>
+            <Project project={project}></Project>
+          </FadeInSection>
         </li>    
       ))
     }

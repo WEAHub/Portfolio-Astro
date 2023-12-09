@@ -1,13 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
+
 interface Props {
   job: CollectionEntry<'jobs'>;
 }
 const { job } = Astro.props;
 const { Content } = await job.render();
 ---
-
 <div class="job group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
   <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
   <header class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label={job.data.date}>{job.data.date}</header>
@@ -34,7 +34,7 @@ const { Content } = await job.render();
         ))
       }
     </h3>
-    <div class="description prose prose-sm mt-2 leading-normal">
+    <div class="description description--open lg:description--closed prose prose-sm mt-2 leading-normal overflow-hidden text-ellipsis break-words">
       <Content />
     </div>
       <ul class="mt-2 flex flex-wrap" aria-label="Related links">
@@ -67,19 +67,26 @@ const { Content } = await job.render();
   </div>
 </div>
 
-<style>
+<style lang="scss">
+@tailwind utilities;
 
-   .job:hover .description {
+@responsive {
+  .job:hover .description--closed {
+    max-height: 30rem;
+    transition: max-height .3s ease-in;
+  }
+
+  .description {
+    transition: max-height .1s ease-out;
+
+    &--open {
       max-height: 30rem;
-      width: 100%;
-      transition: max-height .3s ease-in;
-   }
+    }
 
-   .description {
-      transition: max-height .1s ease-out;
+    &--closed {
       max-height: 9rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      word-wrap: break-word;
-   }
+    }
+  }
+
+}
 </style>

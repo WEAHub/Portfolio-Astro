@@ -8,4 +8,4 @@ web: https://www.spainhouses.net/
 - Gestión de productos.
 - Desarrollo de modulos para joomla.
 - Actualización de la plantilla
-- Desarrollo de CMS con patron MVC para reemplazarlo por el Joomla a futuro
+- Desarrollo de ***CMS con patron MVC*** para reemplazarlo por el Joomla a futuro
