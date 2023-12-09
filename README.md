@@ -1,3 +1,3 @@
-# Persona portfolio made in Astro
+# Personal portfolio made in Astro
 Vercel: https://portfolio-astro-sepia.vercel.app/
 
