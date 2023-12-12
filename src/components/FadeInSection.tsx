@@ -1,14 +1,23 @@
 import React from "react";
 
 export default function FadeInSection(props: React.PropsWithChildren) {
-  const [isVisible, setVisible] = React.useState(true);
-  const domRef: any = React.useRef();
+  const [isVisible, setVisible] = React.useState(true)
+  const domRef: any = React.useRef()
+  let observer: IntersectionObserver
 
   React.useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => setVisible(entry.isIntersecting));
+    observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const { isIntersecting } = entry;
+        setVisible(isIntersecting)
+        if(isIntersecting) {
+          observer.unobserve(domRef.current!)
+        }
+      });
     });
+
     observer.observe(domRef.current!);
+    
     return () => observer.unobserve(domRef.current!);
   }, []);
 
